@@ -17,37 +17,41 @@ class Courses:
         self.credits = credits
 
 # Create the grade book class
+
+
 def main():
     gradebook = GradeBook()
-    While True
+    while True:
     display_menu()
-    
 
     # Define the add_student method
+
     def add_student(self):
         email = input("Enter student's email: ")
         names = input("Enter student's name: ")
         new_student = Student(email, names)
         self.student_list.append(new_student)
-    
 
     # Define the add_course() method
+
     def add_course(self):
         name = input("Enter course name: ")
         trimester = input("Enter course trimester: ")
         credits = int(input("Enter course credits: "))
         new_course = Course(name, trimester, credits)
         self.course_list.append(new_course)
-    
-    
+
     # Define the register_student_for_course() method
+
     def register_student_for_course(self):
         try:
             student_email = input("Enter student's email: ")
             course_name = input("Enter course name: ")
 
-            student = next((s for s in self.student_list if s.email == student_email), None)
-            course = next((c for c in self.course_list if c.name == course_name), None)
+            student = next(
+                (s for s in self.student_list if s.email == student_email), None)
+            course = next(
+                (c for c in self.course_list if c.name == course_name), None)
 
             if student is None:
                 raise ValueError("Student not found")
@@ -55,24 +59,23 @@ def main():
                 raise ValueError("Course not found")
 
             student.register_for_course(course)
-            print(f"Student {student.names} has been registered for course {course.name}")
+            print(
+                f"Student {student.names} has been registered for course {course.name}")
 
         except ValueError as e:
             print(e)
-    
 
     # Define the calculate_GPA() method
+    def calculate_GPA(self):
+        for student in self.student_list:
+            student.calculate_GPA()
+            print(f"Student {student.names} has a GPA of {student.GPA:.2f}")
+    
+    # Define the calculate_ranking() method
 
+    # Define the search_by_grade() method
 
-# Define the calculate_ranking() method
-
-# Define the search_by_grade() method
-
-# Define the generate_transcript() method create the main program
-
-# Create instances of the Student and Course classes
-
-# Create an example of the Grade Book class
+    # Define the generate_transcript() method create the main program
 
 # Display a menu of actions for the user to choose from
 def display_menu():
@@ -90,7 +93,9 @@ def display_menu():
 
 # Display the results of the selected action
 
-#Main loop of The application
+# Main loop of The application
+
+
 def main():
     gradebook = GradeBook()
 
@@ -115,4 +120,3 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
-
