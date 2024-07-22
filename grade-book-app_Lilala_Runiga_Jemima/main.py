@@ -101,23 +101,17 @@ def main():
 
 # Display a menu of actions for the user to choose from
 def display_menu():
-    print(" Gradebook Application")
+    print("----------------------------------------------Gradebook Application--------------------------------------------------")
     print("\nMenu:")
     print("1. Add Student")
     print("2. Add Course")
     print("3. Register Student for Course")
     print("4. Calculate Ranking")
     print("5. Search by Grade")
-    print("6. Generate Transcript")
-    print("7. Exit")
-
-# Implement the chosen action using the Grade Book class methods
-
-# Display the results of the selected action
+    print("6. Generate Student Transcript")
+    print("7. Exit the Application")
 
 # Main loop of The application
-
-
 def main():
     gradebook = GradeBook()
 
