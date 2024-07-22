@@ -74,8 +74,30 @@ def main():
     # Define the calculate_ranking() method
 
     # Define the search_by_grade() method
+    def search_by_grade(self):
+        lower_bound = float(input("Enter the lower GPA bound: "))
+        upper_bound = float(input("Enter the upper GPA bound: "))
+
+        filtered_students = [s for s in self.student_list if lower_bound <= s.GPA <= upper_bound]
+
+        if filtered_students:
+            for student in filtered_students:
+                print(f"Student {student.names} with GPA {student.GPA:.2f}")
+        else:
+            print("No students found within the specified GPA range.")
 
     # Define the generate_transcript() method create the main program
+    def generate_transcript(self):
+        student_email = input("Enter student's email: ")
+        student = next((s for s in self.student_list if s.email == student_email), None)
+
+        if student:
+            print(f"\nTranscript for {student.names}:")
+            for course in student.courses_registered:
+                print(f"Course: {course.name}, Credits: {course.credits}, Grade: {course.grade}")
+            print(f"GPA: {student.GPA:.2f}\n")
+        else:
+            print("Student not found.")
 
 # Display a menu of actions for the user to choose from
 def display_menu():
