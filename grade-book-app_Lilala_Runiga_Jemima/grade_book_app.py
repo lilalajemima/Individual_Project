@@ -71,6 +71,23 @@ class GradeBook:
             print(f"GPA: {student.GPA:.2f}\n")
         else:
             print("Student not found.")
+    
+    def list_all_students(self):
+        if not self.student_list:
+            print("No students recorded.")
+        else:
+            print("List of all students:")
+            for student in self.student_list:
+                print(f"Name: {student.names}, Email: {student.email}")
+
+    def list_all_courses(self):
+        if not self.course_list:
+            print("No courses recorded.")
+        else:
+            print("List of all courses:")
+            for course in self.course_list:
+                print(f"Name: {course.name}, Trimester: {course.trimester}, Credits: {course.credits}")
+
             
 def display_menu():
     print("----------------------------------------------Gradebook Application--------------------------------------------------")
@@ -81,7 +98,9 @@ def display_menu():
     print("4. Calculate Ranking")
     print("5. Search by Grade")
     print("6. Generate Student Transcript")
-    print("7. Exit the Application")
+    print("7. List All Students")
+    print("8. List All Courses")
+    print("9. Exit the Application")
 
 def main():
     gradebook = GradeBook()
@@ -103,7 +122,11 @@ def main():
         elif choice == '6':
             gradebook.generate_transcript()
         elif choice == '7':
-            print("Exiting the program.")
+            gradebook.list_all_students()
+        elif choice == '8':
+            gradebook.list_all_courses()
+        elif choice == '9':
+            print("Closing the program.")
             break
         else:
             print("Invalid choice. Please try again.")
