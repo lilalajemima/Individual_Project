@@ -27,27 +27,21 @@ class GradeBook:
             student_email = input("Enter student's email: ")
             course_name = input("Enter course name: ")
 
-            student = next(
-                (s for s in self.student_list if s.email == student_email), None)
-            course = next(
-                (c for c in self.course_list if c.name == course_name), None)
+            student = next((s for s in self.student_list if s.email == student_email), None)
+            course = next((c for c in self.course_list if c.name == course_name), None)
 
             if student is None:
                 raise ValueError("Student not found")
             if course is None:
                 raise ValueError("Course not found")
 
+            course.grade = float(input(f"Enter grade for course {course_name} (0.0 - 4.0): "))
             student.courses_registered.append(course)
-            print(
-                f"Student {student.names} has been registered for course {course.name}")
+            student.update_GPA()
+            print(f"Student {student.names} has been registered for course {course.name}")
 
         except ValueError as e:
             print(e)
-
-    def calculate_GPA(self):
-        for student in self.student_list:
-            # GPA calculation logic here
-            print(f"Student {student.names} has a GPA of {student.GPA:.2f}")
 
     def calculate_ranking(self):
         sorted_students = sorted(self.student_list, key=lambda s: s.GPA, reverse=True)
@@ -67,11 +61,11 @@ class GradeBook:
         if student:
             print(f"\nTranscript for {student.names}:")
             for course in student.courses_registered:
-                print(f"Course: {course.name}, Credits: {course.credits}")
+                print(f"Course: {course.name}, Credits: {course.credits}, Grade: {course.grade}")
             print(f"GPA: {student.GPA:.2f}\n")
         else:
             print("Student not found.")
-    
+
     def list_all_students(self):
         if not self.student_list:
             print("No students recorded.")
@@ -88,7 +82,6 @@ class GradeBook:
             for course in self.course_list:
                 print(f"Name: {course.name}, Trimester: {course.trimester}, Credits: {course.credits}")
 
-            
 def display_menu():
     print("----------------------------------------------Gradebook Application--------------------------------------------------")
     print("\nMenu:")
@@ -133,4 +126,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
